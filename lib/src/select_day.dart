@@ -4,6 +4,7 @@ import 'package:day_picker/model/day_in_week.dart';
 class SelectWeekDays extends StatefulWidget {
   // [onSelect] callBack to handle the Selected days
   final Function onSelect;
+  final List<String> selected;
 
   // [backgroundColor] - property to change the color of the container.
   final Color backgroundColor,
@@ -33,6 +34,7 @@ class SelectWeekDays extends StatefulWidget {
     this.border = true,
     this.boxDecoration,
     this.padding = 8.0,
+    this.selected = [],
     Key key,
   })  : assert(onSelect != null),
         super(key: key);
@@ -44,29 +46,31 @@ class SelectWeekDays extends StatefulWidget {
 class _SelectWeekDaysState extends State<SelectWeekDays> {
   // list to insert the selected days.
   List<String> selectedDays = [];
-
   // list of days in a week.
   List<DayInWeek> _days = [
     DayInWeek(
-      "Sunday",
+      "Lunes",
+      widget.selected.contains("Lunes"),
     ),
     DayInWeek(
-      "Monday",
+      "Martes",
+      widget.selected.contains("Martes"),
     ),
     DayInWeek(
-      "Tuesday",
+      "Miercoles",
+      widget.selected.contains("Miercoles"),
     ),
     DayInWeek(
-      "Wednesday",
+      "Jueves",
+      widget.selected.contains("Jueves"),
     ),
     DayInWeek(
-      "Thursday",
+      "Viernes",
+      widget.selected.contains("Viernes"),
     ),
     DayInWeek(
-      "Friday",
-    ),
-    DayInWeek(
-      "Saturday",
+      "Sabado",
+      widget.selected.contains("Sabado"),
     ),
   ];
 
