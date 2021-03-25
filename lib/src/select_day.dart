@@ -34,7 +34,7 @@ class SelectWeekDays extends StatefulWidget {
     this.border = true,
     this.boxDecoration,
     this.padding = 8.0,
-    this.selected = [],
+    this.selected,
     Key key,
   })  : assert(onSelect != null),
         super(key: key);
@@ -47,32 +47,38 @@ class _SelectWeekDaysState extends State<SelectWeekDays> {
   // list to insert the selected days.
   List<String> selectedDays = [];
   // list of days in a week.
-  List<DayInWeek> _days = [
-    DayInWeek(
-      "Lunes",
-      widget.selected.contains("Lunes"),
-    ),
-    DayInWeek(
-      "Martes",
-      widget.selected.contains("Martes"),
-    ),
-    DayInWeek(
-      "Miercoles",
-      widget.selected.contains("Miercoles"),
-    ),
-    DayInWeek(
-      "Jueves",
-      widget.selected.contains("Jueves"),
-    ),
-    DayInWeek(
-      "Viernes",
-      widget.selected.contains("Viernes"),
-    ),
-    DayInWeek(
-      "Sabado",
-      widget.selected.contains("Sabado"),
-    ),
-  ];
+  List<DayInWeek> _days;
+
+  @override
+  void initState() {
+    _days = [
+      DayInWeek(
+        "Lunes",
+        widget.selected?.contains("Lunes") ?? false,
+      ),
+      DayInWeek(
+        "Martes",
+        widget.selected?.contains("Martes") ?? false,
+      ),
+      DayInWeek(
+        "Miercoles",
+        widget.selected?.contains("Miercoles") ?? false,
+      ),
+      DayInWeek(
+        "Jueves",
+        widget.selected?.contains("Jueves") ?? false,
+      ),
+      DayInWeek(
+        "Viernes",
+        widget.selected?.contains("Viernes") ?? false,
+      ),
+      DayInWeek(
+        "Sabado",
+        widget.selected?.contains("Sabado") ?? false,
+      ),
+    ];
+    super.initState();
+  }
 
   void _getSelectedWeekDays(bool isSelected, String day) {
     if (isSelected == true) {
